@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { ArrowDown, MapPin } from "lucide-react";
 import { TacticalGrid } from "@/components/ui/TacticalGrid";
+import ayushProfilePic from "../../../public/ayush.png";
 
 export function HeroSection() {
   return (
@@ -88,7 +89,7 @@ export function HeroSection() {
                 className="circle-cutout relative w-48 h-48 md:w-56 md:h-56 overflow-hidden border-2 border-primary-container/30 glow-red flex items-center justify-center bg-surface-container-low"
               >
                 <Image
-                  src="/ayush.png"
+                  src={ayushProfilePic}
                   alt="Ayush Jain"
                   width={256}
                   height={256}
