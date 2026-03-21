@@ -1,26 +1,136 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* === SURFACE COLORS (Tonal Hierarchy) === */
+  --color-surface: #101419;
+  --color-surface-dim: #101419;
+  --color-surface-bright: #353940;
+  --color-surface-container-lowest: #0a0e14;
+  --color-surface-container-low: #181c22;
+  --color-surface-container: #1c2026;
+  --color-surface-container-high: #262a31;
+  --color-surface-container-highest: #31353c;
+  --color-surface-variant: #31353c;
+
+  /* === PRIMARY (Tactical Red) === */
+  --color-primary: #ffb4a8;
+  --color-primary-container: #ff5540;
+  --color-on-primary: #690000;
+  --color-on-primary-container: #5c0000;
+  --color-inverse-primary: #c00100;
+
+  /* === SECONDARY === */
+  --color-secondary: #c2c7cd;
+  --color-secondary-container: #42474d;
+  --color-on-secondary: #2c3136;
+  --color-on-surface: #dfe2eb;
+  --color-on-surface-variant: #ebbcb4;
+  --color-on-background: #dfe2eb;
+
+  /* === OUTLINE === */
+  --color-outline: #b18780;
+  --color-outline-variant: #603e39;
+
+  /* === FONTS === */
+  --font-headline: "Space Grotesk", sans-serif;
+  --font-body: "Inter", sans-serif;
+
+  /* === CUSTOM SPACING === */
+  --spacing-18: 4.5rem;
+  --spacing-22: 5.5rem;
+  --spacing-26: 6.5rem;
+
+  /* === ANIMATION === */
+  --animate-pulse-glow: pulse-glow 2s ease-in-out infinite;
+  --animate-scan-line: scan-line 4s linear infinite;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Force 0px border radius globally */
+*,
+*::before,
+*::after {
+  border-radius: 0 !important;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+@keyframes scan-line {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+/* === GLOBAL STYLES === */
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-surface);
+  color: var(--color-on-surface);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-primary-container);
+  color: var(--color-on-primary-container);
+}
+
+/* === SCROLLBAR === */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-surface-container-lowest);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-outline-variant);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-outline);
+}
+
+/* === TACTICAL GRID PATTERN === */
+.tactical-grid {
+  background-image:
+    linear-gradient(rgba(223, 226, 235, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(223, 226, 235, 0.03) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* === GLASS EFFECT === */
+.glass {
+  background: rgba(49, 53, 60, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* === GLOW EFFECTS === */
+.glow-primary {
+  box-shadow: 0 0 20px rgba(255, 180, 168, 0.1);
+}
+.glow-primary-hover:hover {
+  box-shadow: 0 0 20px rgba(255, 180, 168, 0.2);
+}
+.glow-red {
+  box-shadow: 0 0 30px rgba(255, 85, 64, 0.15);
+}
+
+/* === GHOST BORDER === */
+.ghost-border {
+  border: 1px solid rgba(96, 62, 57, 0.15);
+}
+
+/* === AMBIENT SHADOW === */
+.ambient-shadow {
+  box-shadow: 0 10px 40px rgba(223, 226, 235, 0.04);
+}
+
+/* === CIRCLE CUTOUT (overrides global 0px radius) === */
+.circle-cutout,
+.circle-cutout * {
+  border-radius: 50% !important;
 }
