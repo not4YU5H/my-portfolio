@@ -65,185 +65,203 @@ await supabase.from('tools').insert(content);`,
     ],
   },
   {
-    slug: "portfolio-hud",
-    title: "PORTFOLIO_HUD_V4",
+    slug: "mood-buster",
+    title: "MOOD_BUSTER",
     description:
-      "Tactical HUD-themed personal portfolio with brutalist design, Framer Motion animations, and dynamic project routes.",
-    sector: "FRONTEND_SYS",
-    deploymentDate: "21_MAR_2025",
+      "Intelligent mood-tracking and sentiment analysis platform designed to recognize emotional patterns and provide actionable well-being insights.",
+    sector: "DATA_ANALYTICS_02",
+    deploymentDate: "10_DEC_2024",
     objectiveStatus: "COMPLETE",
     refId: "AJ-002-BRAVO",
     missionBrief:
-      "Standard portfolio templates lack personality and technical depth. The mission was to design a portfolio that reflects a builder's mindset — immersive, tactical, and data-driven.",
+      "Mental health tracking often relies on tedious manual entry. The mission was to build an intelligent platform that organically captures daily sentiment and visualizes long-term emotional trajectories.",
     primaryChallenge:
-      "Translating a Stitch design prototype into pixel-accurate, responsive Next.js code while maintaining the brutalist HUD aesthetic across all breakpoints.",
+      "Building a secure, private backend that accurately processes human sentiment from text input without compromising user data sovereignty.",
     solutionMandate:
-      "Convert the Stitch design system into Tailwind CSS v4 theme tokens, build reusable section components, and implement dynamic project detail routes with static generation.",
+      "Develop a React-based frontend with a Python backend integrating NLP models for text analysis, storing encrypted logs in a secure database.",
     engineeringLog:
-      "Built a complete design token system mapping Stitch's tonal hierarchy to Tailwind v4 @theme directives. Implemented glassmorphism navbar, tactical grid overlays, and scroll-triggered animations.",
+      "Implemented a Natural Language Processing pipeline to analyze daily journal entries. Built an interactive calendar heatmap on the frontend to visualize mood fluctuations over time.",
     interfaceArchitecture:
-      "A single-page app with smooth scroll sections (Hero, Archive, Lab, Uplink) and dynamically generated project deep-dive pages with metrics and code snippets.",
-    codeSnippet: `// TACTICAL_GRID_OVERLAY
-.tactical-grid {
-  background-image:
-    linear-gradient(rgba(223,226,235,0.03) 1px,
-      transparent 1px),
-    linear-gradient(90deg,
-      rgba(223,226,235,0.03) 1px,
-      transparent 1px);
-  background-size: 24px 24px;
-}`,
-    metrics: [
-      {
-        label: "LIGHTHOUSE",
-        value: "98",
-        description: "Performance score",
-      },
-      {
-        label: "SECTIONS",
-        value: "6",
-        description: "Animated page sections",
-      },
-      {
-        label: "LOAD_TIME",
-        value: "<1s",
-        description: "First contentful paint",
-      },
-    ],
-  },
-  {
-    slug: "game-engine-prototype",
-    title: "VOXEL_ENGINE_X",
-    description:
-      "Custom voxel-based game engine prototype with real-time chunk rendering and procedural terrain generation.",
-    sector: "GAME_DEV_03",
-    deploymentDate: "10_DEC_2024",
-    objectiveStatus: "IN_PROGRESS",
-    refId: "AJ-003-CHARLIE",
-    missionBrief:
-      "Exploring game engine architecture from scratch — building a voxel renderer with chunk-based world loading, procedural generation, and basic physics as a passion project.",
-    primaryChallenge:
-      "Achieving smooth 60fps rendering with dynamically loaded voxel chunks while implementing greedy meshing and frustum culling for performance.",
-    solutionMandate:
-      "Build a WebGL/Three.js based voxel engine with worker-thread chunk generation, greedy mesh optimization, and a custom ECS (Entity Component System).",
-    engineeringLog:
-      "Implemented octree-based spatial partitioning for collision detection. Chunk generation runs on Web Workers to avoid main-thread blocking. Procedural noise generates diverse biomes.",
-    interfaceArchitecture:
-      "First-person camera with WASD controls, block placement/destruction, and a debug HUD showing FPS, chunk count, and memory usage.",
-    codeSnippet: `// CHUNK_GENERATOR
-const worker = new Worker('./chunkGen.js');
-worker.postMessage({
-  x: chunkX, z: chunkZ,
-  seed: worldSeed
-});
-worker.onmessage = (e) => {
-  scene.add(buildMesh(e.data));
+      "A minimalist, distraction-free journaling interface paired with an analytics dashboard showing sentiment trends, emotional triggers, and historical heatmaps.",
+    codeSnippet: `// SENTIMENT_ANALYSIS_CLASSIFIER
+const analyzeMood = async (entry: string) => {
+  const response = await fetch('/api/v1/sentiment', {
+    method: 'POST',
+    body: JSON.stringify({ text: entry }),
+    headers: { 'Content-Type': 'application/json' }
+  });
+  
+  const classification = await response.json();
+  if (classification.score < 0.3) {
+    triggerInterventionProtocol(classification.indicators);
+  }
+  return classification.dominantEmotion;
 };`,
     metrics: [
       {
-        label: "RENDER_FPS",
-        value: "60+",
-        description: "Stable frame rate",
+        label: "ANALYSIS_SPEED",
+        value: "140ms",
+        description: "Inference latency",
       },
       {
-        label: "CHUNK_SIZE",
-        value: "16³",
-        description: "Voxels per chunk",
-      },
-      {
-        label: "RENDER_DIST",
-        value: "12",
-        description: "Chunks visible radius",
-      },
-    ],
-  },
-  {
-    slug: "fitness-tracker-cli",
-    title: "FIT_CLI",
-    description:
-      "Terminal-based fitness tracker for logging workouts, tracking PRs, and visualizing progress — built for gym rats who love the terminal.",
-    sector: "TOOLS_04",
-    deploymentDate: "15_JAN_2025",
-    objectiveStatus: "COMPLETE",
-    refId: "AJ-004-DELTA",
-    missionBrief:
-      "Fitness apps are bloated with ads and unnecessary features. The mission was to build a minimal, fast, terminal-based workout logger that respects the user's time and data.",
-    primaryChallenge:
-      "Designing an intuitive TUI that makes logging sets, reps, and weights as fast as possible while providing meaningful analytics and progress tracking.",
-    solutionMandate:
-      "Build a Rust-based CLI with SQLite storage, rich TUI for data visualization, and export capabilities for workout history.",
-    engineeringLog:
-      "Used the ratatui crate for terminal UI, serde for config management, and SQLite for persistent storage. Added ASCII chart rendering for progress visualization.",
-    interfaceArchitecture:
-      "A multi-tab TUI with workout logging, exercise library, PR board, and weekly/monthly progress charts — all navigable via keyboard shortcuts.",
-    codeSnippet: `// WORKOUT_LOG
-let set = WorkoutSet {
-  exercise: "Bench Press",
-  weight: 80.0,
-  reps: 8,
-  timestamp: Utc::now(),
-};
-db.insert_set(&set)?;
-println!("✓ Logged: {}kg x{}", set.weight, set.reps);`,
-    metrics: [
-      {
-        label: "BOOT_TIME",
-        value: "<20ms",
-        description: "Instant launch",
-      },
-      {
-        label: "STORAGE",
-        value: "<1MB",
-        description: "SQLite database size",
-      },
-      {
-        label: "EXERCISES",
-        value: "50+",
-        description: "Built-in library",
-      },
-    ],
-  },
-  {
-    slug: "cricket-score-bot",
-    title: "CRICKET_LIVE_BOT",
-    description:
-      "Real-time cricket score bot for Discord/Telegram with live ball-by-ball updates, match alerts, and stats.",
-    sector: "AUTOMATION_05",
-    deploymentDate: "08_FEB_2025",
-    objectiveStatus: "COMPLETE",
-    refId: "AJ-005-ECHO",
-    missionBrief:
-      "Following live cricket across multiple sources is fragmented. The objective was a single bot that delivers ball-by-ball updates, key match events, and player stats directly to group chats.",
-    primaryChallenge:
-      "Scraping live score data reliably with minimal latency while formatting updates for readability across different messaging platforms.",
-    solutionMandate:
-      "Build a Node.js bot with WebSocket connections to live score APIs, event-driven architecture for match state changes, and platform-agnostic message formatting.",
-    engineeringLog:
-      "Implemented a pub/sub model for match subscriptions. Each match runs as an independent event loop with configurable update frequency and smart deduplication.",
-    interfaceArchitecture:
-      "Slash commands for subscribing to matches, setting alert preferences, and querying player/team statistics. Rich embeds for wickets, milestones, and match summaries.",
-    codeSnippet: `// MATCH_SUBSCRIPTION
-bot.on('/subscribe', async (ctx) => {
-  const match = await api.getLiveMatch(ctx.args);
-  subscriptions.add(ctx.chatId, match.id);
-  ctx.reply(\`🏏 Subscribed: \${match.title}\`);
-  startLiveUpdates(match.id, ctx.chatId);
-});`,
-    metrics: [
-      {
-        label: "LATENCY",
-        value: "<5s",
-        description: "Score update delay",
-      },
-      {
-        label: "MATCHES",
-        value: "10+",
-        description: "Concurrent tracking",
+        label: "ACCURACY",
+        value: "92%",
+        description: "Sentiment precision",
       },
       {
         label: "UPTIME",
-        value: "99.5%",
-        description: "Bot availability",
+        value: "99.9%",
+        description: "API availability",
+      },
+    ],
+  },
+  {
+    slug: "reckless-racer",
+    title: "RECKLESS_RACER",
+    description:
+      "Fast-paced arcade racing game published on Indus Appstore. Players navigate logic-defying zig-zag neon mazes with split-second reflexes.",
+    sector: "GAME_DEV_03",
+    deploymentDate: "05_NOV_2023",
+    objectiveStatus: "COMPLETE",
+    refId: "AJ-003-CHARLIE",
+    missionBrief:
+      "Mobile stores are flooded with hyper-casual clones. The mission was to build an adrenaline-pumping, reflex-testing racer with pulsing neon aesthetics and a killer lo-fi soundtrack.",
+    primaryChallenge:
+      "Tuning the physics and input latency to ensure the car responds perfectly to split-second swipe gestures, preventing unfair wipeouts at high speeds.",
+    solutionMandate:
+      "Developed using the Unity Engine (C#). Implemented a custom kinematic vehicle controller optimized for mobile touch inputs and procedural level generation.",
+    engineeringLog:
+      "Built a dynamic difficulty scaler that tightens corners and increases speed based on the player's current combo streak. Optimized draw calls to maintain a flawless 60 FPS on low-end Android devices.",
+    interfaceArchitecture:
+      "A distraction-free, high-contrast neon UI tracking score, coin collection, and combo multipliers globally synced to leaderboards.",
+    codeSnippet: `// VEHICLE_KINEMATICS
+void FixedUpdate() {
+    float moveHorizontal = dynamicJoystick.Horizontal;
+    Vector3 movement = new Vector3(moveHorizontal, 0.0f, baseSpeed);
+    
+    rb.velocity = movement * accelerationMultiplier;
+
+    if (isDrifting) {
+        ApplyDriftPhysics();
+        comboMeter += Time.fixedDeltaTime * 2.5f;
+        TriggerNeonPulseEffect();
+    }
+}`,
+    metrics: [
+      {
+        label: "RATING",
+        value: "5.0",
+        description: "Indus Appstore",
+      },
+      {
+        label: "TARGET_FPS",
+        value: "60",
+        description: "Smooth mobile render",
+      },
+      {
+        label: "ENGINE",
+        value: "C#",
+        description: "Unity Engine",
+      },
+    ],
+  },
+  {
+    slug: "fitness-agent",
+    title: "FITNESS_AGENT",
+    description:
+      "Autonomous AI agent for personalized workout generation, dynamic progression tracking, and adaptive training plans using LLM reasoning.",
+    sector: "AI_OPS_04",
+    deploymentDate: "15_FEB_2025",
+    objectiveStatus: "COMPLETE",
+    refId: "AJ-004-AGENT",
+    missionBrief:
+      "Static workout apps fail to adapt to unpredictable human progress and fatigue levels. The mission was to build an intelligent agent that algorithms adjust routines in real-time.",
+    primaryChallenge:
+      "Designing a system prompt and tool schema that allows the LLM to understand progressive overload, biomechanics, and user fatigue without hallucinating dangerous volume.",
+    solutionMandate:
+      "Implement a LangChain-based agent architecture with specialized tools for workout generation, RPE (Rate of Perceived Exertion) analysis, and volume tracking.",
+    engineeringLog:
+      "Integrated OpenAI's GPT-4 for reasoning, connected to a vector database containing kinesiology and powerlifting methodologies. The agent recalibrates the plan after every logged session.",
+    interfaceArchitecture:
+      "A chat-based interface where the user logs their workout naturally, and the agent parses the data to update the internal SQLite database.",
+    codeSnippet: `// AGENT_ROUTINE_GEN
+const agent = new FitnessAgent({
+  model: "gpt-4-turbo",
+  tools: [WorkoutGenerator, RPETracker]
+});
+
+const plan = await agent.execute({
+  goal: "hypertrophy",
+  equipment: ["dumbbells", "pull-up bar"],
+  fatigueLevel: "moderate"
+});
+
+db.updateTrainingMatrix(plan);`,
+    metrics: [
+      {
+        label: "AI_LATENCY",
+        value: "<1.2s",
+        description: "Reasoning time",
+      },
+      {
+        label: "KNOWLEDGE_DB",
+        value: "10k+",
+        description: "Training vectors",
+      },
+      {
+        label: "ADAPTABILITY",
+        value: "HIGH",
+        description: "Real-time updates",
+      },
+    ],
+  },
+  {
+    slug: "privyshare",
+    title: "PRIVY_SHARE",
+    description:
+      "Secure, end-to-end encrypted file sharing and text drop platform. Designed for zero-knowledge data transfer with auto-expiring links.",
+    sector: "CYBER_SEC_05",
+    deploymentDate: "12_MAR_2025",
+    objectiveStatus: "COMPLETE",
+    refId: "AJ-005-ECHO",
+    missionBrief:
+      "Sharing sensitive data over traditional messaging apps leaves traces on corporate servers. The objective was to build a zero-knowledge drop zone where files and text self-destruct after viewing.",
+    primaryChallenge:
+      "Implementing robust client-side encryption (AES-GCM) so the server never sees the raw payload, while keeping the user experience frictionless with shareable links.",
+    solutionMandate:
+      "Develop a Next.js web interface with Web Crypto API for client-side encryption. Use a fast backend (Redis/Supabase) to store encrypted blobs and handle TTL expirations.",
+    engineeringLog:
+      "The encryption key is appended to the URL hash fragment (which is never sent to the server). The server only receives the encrypted payload and salt. Once the TTL expires, the blob is permanently purged.",
+    interfaceArchitecture:
+      "A brutalist, high-contrast UI focused on a single drop zone. Generates one-time viewing links and provides real-time progress indicators during the cryptographic process.",
+    codeSnippet: `// CLIENT_SIDE_ENCRYPTION
+const encryptPayload = async (data: string) => {
+  const enc = new TextEncoder();
+  const key = await generateKey();
+  const iv = crypto.getRandomValues(new Uint8Array(12));
+  
+  const ciphertext = await crypto.subtle.encrypt(
+    { name: "AES-GCM", iv },
+    key,
+    enc.encode(data)
+  );
+  return { ciphertext, exportedKey: await exportKeyUrl(key) };
+};`,
+    metrics: [
+      {
+        label: "ENCRYPTION",
+        value: "AES-256",
+        description: "Client-side crypto",
+      },
+      {
+        label: "TTL_SUPPORT",
+        value: "YES",
+        description: "Auto-destruct",
+      },
+      {
+        label: "PAYLOAD",
+        value: "<100MB",
+        description: "Blob size limit",
       },
     ],
   },
