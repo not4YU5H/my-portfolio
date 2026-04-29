@@ -173,21 +173,33 @@ export function Navbar() {
           >
             <div className="px-6 py-4 space-y-1">
               {navLinks.map((link, i) => (
-                <motion.a
+                <motion.button
                   key={link.href}
-                  href={getHref(link.href)}
-                  onClick={() => setIsOpen(false)}
+                  onClick={() => {
+                    setIsOpen(false);
+                    // Delay scroll until menu close animation completes
+                    setTimeout(() => {
+                      if (isHome) {
+                        const el = document.getElementById(link.href);
+                        if (el) {
+                          el.scrollIntoView({ behavior: "smooth" });
+                        }
+                      } else {
+                        window.location.href = `/#${link.href}`;
+                      }
+                    }, 300);
+                  }}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.1 }}
-                  className={`block font-headline text-sm tracking-[0.2em] transition-colors py-3 ${
+                  className={`block w-full text-left font-headline text-sm tracking-[0.2em] transition-colors py-3 ${
                     isHome && activeSection === link.href
                       ? "text-primary-container"
                       : "text-secondary hover:text-primary"
                   }`}
                 >
                   {link.label}
-                </motion.a>
+                </motion.button>
               ))}
             </div>
           </motion.div>
