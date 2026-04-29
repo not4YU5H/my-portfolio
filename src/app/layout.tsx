@@ -3,6 +3,8 @@ import { Space_Grotesk, Inter } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { ThemeProvider } from "@/components/ui/ThemeProvider";
+import { ScrollProgress } from "@/components/ui/ScrollProgress";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-headline",
@@ -35,12 +37,21 @@ export const metadata: Metadata = {
       "B.Tech CS from KIIT. Full-stack developer, gamer, fitness enthusiast.",
     type: "website",
     locale: "en_US",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Ayush Jain — Full-Stack Developer Portfolio",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Ayush Jain // Portfolio",
     description:
       "B.Tech CS from KIIT. Full-stack developer, gamer, fitness enthusiast.",
+    images: ["/og-image.png"],
   },
 };
 
@@ -52,12 +63,17 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      data-theme="dark"
       className={`${spaceGrotesk.variable} ${inter.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col bg-surface text-on-surface font-body">
-        <Navbar />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <ThemeProvider>
+          <ScrollProgress />
+          <Navbar />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );

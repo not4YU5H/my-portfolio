@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowLeft, ExternalLink } from "lucide-react";
+import { ArrowLeft, ExternalLink, Github } from "lucide-react";
 import { TacticalGrid } from "@/components/ui/TacticalGrid";
 import { CodeBlock } from "@/components/ui/CodeBlock";
 import { MetricsDisplay } from "@/components/ui/MetricsDisplay";
@@ -59,6 +59,39 @@ export function ProjectDetailClient({ project }: { project: Project }) {
             <br />
             <span className="text-primary-container">{project.title}</span>
           </motion.h1>
+
+          {/* Project Links */}
+          {(project.githubUrl || project.liveUrl) && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="flex flex-wrap gap-4 mt-8"
+            >
+              {project.githubUrl && (
+                <a
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 ghost-border px-6 py-2.5 font-headline text-xs tracking-widest text-secondary hover:text-primary hover:bg-surface-container-high transition-all"
+                >
+                  <Github className="w-4 h-4" />
+                  VIEW_SOURCE
+                </a>
+              )}
+              {project.liveUrl && (
+                <a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 bg-primary-container px-6 py-2.5 font-headline text-xs tracking-widest text-on-primary-container hover:shadow-[0_0_16px_rgba(255,85,64,0.3)] transition-all"
+                >
+                  <ExternalLink className="w-4 h-4" />
+                  LIVE_DEMO
+                </a>
+              )}
+            </motion.div>
+          )}
         </div>
       </section>
 

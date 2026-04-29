@@ -93,7 +93,7 @@ export function SystemDiagnostics() {
             </div>
             <div className="pt-4">
               <span className="font-headline text-[9px] tracking-[0.3em] text-secondary/30">
-                LAST_UPDATED: 24_OCT_2024 // 14:32:09 UTC
+                LAST_UPDATED: 29_APR_2025 // 18:00:00 UTC
               </span>
             </div>
           </motion.div>

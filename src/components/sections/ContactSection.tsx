@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { ContactForm } from "@/components/ui/ContactForm";
+import { GenerativeArt } from "@/components/ui/GenerativeArt";
 import { Github, Linkedin, Instagram } from "lucide-react";
 
 const socialLinks = [
@@ -88,21 +89,15 @@ export function ContactSection() {
               ))}
             </div>
 
-            {/* Visual Node */}
-            <div className="mt-8 bg-surface-container p-6 ghost-border">
-              <div className="flex items-center gap-2 mb-3">
+            {/* Generative Art Node */}
+            <div className="mt-8 bg-surface-container ghost-border overflow-hidden">
+              <div className="flex items-center gap-2 px-6 pt-4 pb-2">
                 <div className="w-2 h-2 bg-primary-container animate-pulse" />
                 <span className="font-headline text-[10px] tracking-[0.3em] text-secondary/40">
                   VISUAL_NODE_ACTIVE
                 </span>
               </div>
-              <div className="h-32 bg-surface-container-lowest flex items-center justify-center">
-                <div className="w-16 h-16 border border-primary-container/20 flex items-center justify-center">
-                  <div className="w-8 h-8 bg-primary-container/10 flex items-center justify-center">
-                    <div className="w-2 h-2 bg-primary-container animate-pulse" />
-                  </div>
-                </div>
-              </div>
+              <GenerativeArt />
             </div>
           </motion.div>
         </div>

@@ -17,6 +17,8 @@ export interface Project {
     value: string;
     description: string;
   }[];
+  githubUrl?: string;
+  liveUrl?: string;
 }
 
 export const projects: Project[] = [

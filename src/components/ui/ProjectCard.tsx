@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Github, ExternalLink } from "lucide-react";
 import type { Project } from "@/lib/data/projects";
 
 interface ProjectCardProps {
@@ -41,14 +41,44 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
             {project.description}
           </p>
 
-          {/* Meta */}
-          <div className="flex items-center gap-4 pt-2">
-            <span className="font-headline text-[10px] tracking-widest text-secondary/40">
-              {project.deploymentDate}
-            </span>
-            <span className="font-headline text-[10px] tracking-widest text-green-400/60">
-              {project.objectiveStatus}
-            </span>
+          {/* Meta + Links */}
+          <div className="flex items-center justify-between pt-2">
+            <div className="flex items-center gap-4">
+              <span className="font-headline text-[10px] tracking-widest text-secondary/40">
+                {project.deploymentDate}
+              </span>
+              <span className="font-headline text-[10px] tracking-widest text-green-400/60">
+                {project.objectiveStatus}
+              </span>
+            </div>
+            <div className="flex items-center gap-2">
+              {project.githubUrl && (
+                <span
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    window.open(project.githubUrl, "_blank");
+                  }}
+                  className="w-7 h-7 flex items-center justify-center text-secondary/40 hover:text-primary-container hover:bg-surface-container-highest transition-all cursor-pointer"
+                  aria-label="View source code"
+                >
+                  <Github className="w-3.5 h-3.5" />
+                </span>
+              )}
+              {project.liveUrl && (
+                <span
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    window.open(project.liveUrl, "_blank");
+                  }}
+                  className="w-7 h-7 flex items-center justify-center text-secondary/40 hover:text-primary-container hover:bg-surface-container-highest transition-all cursor-pointer"
+                  aria-label="View live demo"
+                >
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </span>
+              )}
+            </div>
           </div>
         </div>
       </Link>
