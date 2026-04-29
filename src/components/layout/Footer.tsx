@@ -35,13 +35,20 @@ export function Footer() {
                 { label: "JOURNAL", id: "blog" },
                 { label: "UPLINK", id: "contact" },
               ].map((link) => (
-                <a
+                <button
                   key={link.label}
-                  href={`/#${link.id}`}
-                  className="font-headline text-xs tracking-widest text-secondary/60 hover:text-primary transition-colors"
+                  onClick={() => {
+                    const el = document.getElementById(link.id);
+                    if (el) {
+                      el.scrollIntoView({ behavior: "smooth" });
+                    } else {
+                      window.location.href = `/#${link.id}`;
+                    }
+                  }}
+                  className="text-left font-headline text-xs tracking-widest text-secondary/60 hover:text-primary transition-colors"
                 >
                   {link.label}
-                </a>
+                </button>
               ))}
             </div>
           </div>
