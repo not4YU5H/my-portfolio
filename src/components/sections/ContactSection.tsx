@@ -9,21 +9,21 @@ import { Github, Linkedin, Instagram } from "lucide-react";
 const socialLinks = [
   {
     protocol: "PROTOCOL::GITHUB",
-    coords: "40.7128° N, 74.0060° W",
+    coords: "18.5204° N, 73.8567° E",
     icon: Github,
     href: "https://github.com/not4YU5H",
     label: "terminal",
   },
   {
     protocol: "PROTOCOL::LINKEDIN",
-    coords: "34.0522° N, 118.2437° W",
+    coords: "18.5204° N, 73.8567° E",
     icon: Linkedin,
     href: "https://www.linkedin.com/in/ayushjain001",
     label: "link",
   },
   {
     protocol: "PROTOCOL::INSTAGRAM",
-    coords: "51.5074° N, 0.1278° W",
+    coords: "18.5204° N, 73.8567° E",
     icon: Instagram,
     href: "https://www.instagram.com/mr.ayush.jain",
     label: "visual_feed",
