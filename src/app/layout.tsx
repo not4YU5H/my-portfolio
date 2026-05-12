@@ -36,10 +36,11 @@ export const metadata: Metadata = {
     description:
       "B.Tech CS from KIIT. Full-stack developer, gamer, fitness enthusiast.",
     type: "website",
+    url: "https://not4yu5h.github.io/my-portfolio",
     locale: "en_US",
     images: [
       {
-        url: "/og-image.png",
+        url: "https://not4yu5h.github.io/my-portfolio/og-image.png",
         width: 1200,
         height: 630,
         alt: "Ayush Jain — Full-Stack Developer Portfolio",
@@ -51,7 +52,7 @@ export const metadata: Metadata = {
     title: "Ayush Jain // Portfolio",
     description:
       "B.Tech CS from KIIT. Full-stack developer, gamer, fitness enthusiast.",
-    images: ["/og-image.png"],
+    images: ["https://not4yu5h.github.io/my-portfolio/og-image.png"],
   },
 };
 
