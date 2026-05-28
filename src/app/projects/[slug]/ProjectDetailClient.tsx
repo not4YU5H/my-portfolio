@@ -61,16 +61,16 @@ export function ProjectDetailClient({ project }: { project: Project }) {
           </motion.h1>
 
           {/* Project Links */}
-          {(project.githubUrl || project.liveUrl) && (
+          {(project.repoUrl || project.liveUrl) && (
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
               className="flex flex-wrap gap-4 mt-8"
             >
-              {project.githubUrl && (
+              {project.repoUrl && (
                 <a
-                  href={project.githubUrl}
+                  href={project.repoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 ghost-border px-6 py-2.5 font-headline text-xs tracking-widest text-secondary hover:text-primary hover:bg-surface-container-high transition-all"
@@ -235,16 +235,37 @@ export function ProjectDetailClient({ project }: { project: Project }) {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="flex flex-wrap justify-center gap-4"
           >
+            {project.liveUrl && (
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-primary-container px-8 py-3 font-headline text-sm tracking-widest text-on-primary-container hover:shadow-[0_0_16px_rgba(255,85,64,0.3)] transition-all"
+              >
+                <ExternalLink className="w-4 h-4" />
+                LIVE_DEMO
+              </a>
+            )}
+            {project.repoUrl && (
+              <a
+                href={project.repoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 ghost-border px-8 py-3 font-headline text-sm tracking-widest text-secondary hover:text-primary hover:bg-surface-container-high transition-all"
+              >
+                <Github className="w-4 h-4" />
+                REPO_ACCESS
+              </a>
+            )}
             <a
               href="/#contact"
-              className="inline-flex items-center gap-2 bg-primary-container px-8 py-3 font-headline text-sm tracking-widest text-on-primary-container hover:shadow-[0_0_16px_rgba(255,85,64,0.3)] transition-all"
+              className="inline-flex items-center gap-2 ghost-border px-8 py-3 font-headline text-sm tracking-widest text-primary hover:bg-surface-container-high transition-all"
             >
-              <ExternalLink className="w-4 h-4" />
               OPEN_UPLINK
             </a>
             <Link
               href="/#projects"
-              className="inline-flex items-center gap-2 ghost-border px-8 py-3 font-headline text-sm tracking-widest text-primary hover:bg-surface-container-high transition-all"
+              className="inline-flex items-center gap-2 ghost-border px-8 py-3 font-headline text-sm tracking-widest text-secondary hover:text-primary hover:bg-surface-container-high transition-all"
             >
               RETURN_TO_ARCHIVE
             </Link>

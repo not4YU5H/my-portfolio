@@ -17,8 +17,8 @@ export interface Project {
     value: string;
     description: string;
   }[];
-  githubUrl?: string;
-  liveUrl?: string;
+  repoUrl?: string | null;
+  liveUrl?: string | null;
 }
 
 export const projects: Project[] = [
@@ -31,6 +31,8 @@ export const projects: Project[] = [
     deploymentDate: "13_MAR_2025",
     objectiveStatus: "ACTIVE",
     refId: "AJ-001-ALPHA",
+    liveUrl: "https://ai-tools-directory-demo.vercel.app",
+    repoUrl: "https://github.com/not4YU5H/ai-tools-directory",
     missionBrief:
       "The AI landscape lacked a curated, auto-updating directory of tools. The objective was to build a platform that autonomously discovers, categorizes, and publishes AI tool listings with rich generated content and SEO optimization.",
     primaryChallenge:
@@ -75,6 +77,8 @@ await supabase.from('tools').insert(content);`,
     deploymentDate: "10_DEC_2024",
     objectiveStatus: "COMPLETE",
     refId: "AJ-002-BRAVO",
+    liveUrl: "https://mood-buster-demo.vercel.app",
+    repoUrl: "https://github.com/not4YU5H/mood-buster",
     missionBrief:
       "Mental health tracking often relies on tedious manual entry. The mission was to build an intelligent platform that organically captures daily sentiment and visualizes long-term emotional trajectories.",
     primaryChallenge:
@@ -126,6 +130,8 @@ const analyzeMood = async (entry: string) => {
     deploymentDate: "05_NOV_2023",
     objectiveStatus: "COMPLETE",
     refId: "AJ-003-CHARLIE",
+    liveUrl: "https://indusappstore.com/reckless-racer",
+    repoUrl: null,
     missionBrief:
       "Mobile stores are flooded with hyper-casual clones. The mission was to build an adrenaline-pumping, reflex-testing racer with pulsing neon aesthetics and a killer lo-fi soundtrack.",
     primaryChallenge:
@@ -176,6 +182,8 @@ void FixedUpdate() {
     deploymentDate: "15_FEB_2025",
     objectiveStatus: "COMPLETE",
     refId: "AJ-004-AGENT",
+    liveUrl: "https://fitness-agent-demo.vercel.app",
+    repoUrl: "https://github.com/not4YU5H/fitness-agent",
     missionBrief:
       "Static workout apps fail to adapt to unpredictable human progress and fatigue levels. The mission was to build an intelligent agent that algorithms adjust routines in real-time.",
     primaryChallenge:
@@ -226,6 +234,8 @@ db.updateTrainingMatrix(plan);`,
     deploymentDate: "12_MAR_2025",
     objectiveStatus: "COMPLETE",
     refId: "AJ-005-ECHO",
+    liveUrl: "https://privyshare-demo.vercel.app",
+    repoUrl: "https://github.com/not4YU5H/privyshare",
     missionBrief:
       "Sharing sensitive data over traditional messaging apps leaves traces on corporate servers. The objective was to build a zero-knowledge drop zone where files and text self-destruct after viewing.",
     primaryChallenge:
