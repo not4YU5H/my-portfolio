@@ -64,7 +64,7 @@ export function ContactForm() {
             setFormData({ ...formData, callsign: e.target.value })
           }
           className="w-full bg-surface-container-lowest border border-outline-variant/20 px-4 py-3 font-body text-sm text-on-surface placeholder:text-secondary/30 focus:border-primary focus:outline-none focus:shadow-[0_0_8px_rgba(255,180,168,0.15)] transition-all"
-          placeholder="Enter your name…"
+          placeholder="your name"
         />
       </div>
 
@@ -85,7 +85,7 @@ export function ContactForm() {
             setFormData({ ...formData, frequency: e.target.value })
           }
           className="w-full bg-surface-container-lowest border border-outline-variant/20 px-4 py-3 font-body text-sm text-on-surface placeholder:text-secondary/30 focus:border-primary focus:outline-none focus:shadow-[0_0_8px_rgba(255,180,168,0.15)] transition-all"
-          placeholder="Enter your email…"
+          placeholder="your@email.com"
         />
       </div>
 
@@ -106,7 +106,7 @@ export function ContactForm() {
             setFormData({ ...formData, message: e.target.value })
           }
           className="w-full bg-surface-container-lowest border border-outline-variant/20 px-4 py-3 font-body text-sm text-on-surface placeholder:text-secondary/30 focus:border-primary focus:outline-none focus:shadow-[0_0_8px_rgba(255,180,168,0.15)] transition-all resize-none"
-          placeholder="Enter your message…"
+          placeholder="your message..."
         />
       </div>
 
