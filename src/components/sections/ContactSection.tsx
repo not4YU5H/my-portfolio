@@ -42,8 +42,46 @@ export function ContactSection() {
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Contact Form */}
-          <ContactForm />
+          <div className="space-y-8">
+            {/* Protocol Notes */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="bg-surface-container p-6 ghost-border space-y-4"
+            >
+              <h3 className="font-headline text-sm font-bold tracking-widest text-on-surface flex items-center gap-2">
+                <span className="w-2 h-2 bg-primary-container animate-pulse" />
+                PROTOCOL_NOTES
+              </h3>
+              <div className="space-y-2 font-headline text-xs tracking-widest text-secondary/60">
+                <div className="flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-4">
+                  <span className="text-on-surface w-36 flex-shrink-0">RESPONSE_TIME</span>
+                  <span className="text-secondary/40 hidden sm:inline">{"//"}</span>
+                  <span>Within 24 hours</span>
+                </div>
+                <div className="flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-4">
+                  <span className="text-on-surface w-36 flex-shrink-0">ENGAGEMENT_MODE</span>
+                  <span className="text-secondary/40 hidden sm:inline">{"//"}</span>
+                  <span>Async-first. Weekly check-ins on larger projects.</span>
+                </div>
+                <div className="flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-4">
+                  <span className="text-on-surface w-36 flex-shrink-0">REVISION_POLICY</span>
+                  <span className="text-secondary/40 hidden sm:inline">{"//"}</span>
+                  <span>2 rounds included. Scope changes → new estimate.</span>
+                </div>
+                <div className="flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-4">
+                  <span className="text-on-surface w-36 flex-shrink-0">AVAILABILITY</span>
+                  <span className="text-secondary/40 hidden sm:inline">{"//"}</span>
+                  <span>Open to remote projects globally.</span>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Contact Form */}
+            <ContactForm />
+          </div>
 
           {/* Data Nodes */}
           <motion.div
