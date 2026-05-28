@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowUpRight, Github, ExternalLink } from "lucide-react";
+import { ArrowUpRight, Github } from "lucide-react";
 import type { Project } from "@/lib/data/projects";
 
 interface ProjectCardProps {
@@ -51,32 +51,30 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                 {project.objectiveStatus}
               </span>
             </div>
-            <div className="flex items-center gap-2">
-              {project.githubUrl && (
-                <span
-                  onClick={(e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    window.open(project.githubUrl, "_blank");
-                  }}
-                  className="w-7 h-7 flex items-center justify-center text-secondary/40 hover:text-primary-container hover:bg-surface-container-highest transition-all cursor-pointer"
-                  aria-label="View source code"
-                >
-                  <Github className="w-3.5 h-3.5" />
-                </span>
-              )}
+            <div className="flex items-center gap-4">
               {project.liveUrl && (
-                <span
+                <button
                   onClick={(e) => {
                     e.preventDefault();
                     e.stopPropagation();
-                    window.open(project.liveUrl, "_blank");
+                    window.open(project.liveUrl!, "_blank");
                   }}
-                  className="w-7 h-7 flex items-center justify-center text-secondary/40 hover:text-primary-container hover:bg-surface-container-highest transition-all cursor-pointer"
-                  aria-label="View live demo"
+                  className="font-headline text-[10px] tracking-widest text-primary hover:text-primary-container transition-colors flex items-center gap-1"
                 >
-                  <ExternalLink className="w-3.5 h-3.5" />
-                </span>
+                  [LIVE_DEMO <ArrowUpRight className="w-3 h-3" />]
+                </button>
+              )}
+              {project.repoUrl && (
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    window.open(project.repoUrl!, "_blank");
+                  }}
+                  className="font-headline text-[10px] tracking-widest text-secondary hover:text-on-surface transition-colors flex items-center gap-1"
+                >
+                  [REPO_ACCESS <Github className="w-3 h-3" />]
+                </button>
               )}
             </div>
           </div>
