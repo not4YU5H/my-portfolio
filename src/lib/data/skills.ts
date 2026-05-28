@@ -18,7 +18,7 @@ export const skillCategories: SkillCategory[] = [
   },
   {
     title: "INTERESTS",
-    items: ["GAME DEVELOPMENT", "AI / ML", "PHOTOGRAPHY", "CYBERSECURITY"],
+    items: ["GAME DEVELOPMENT", "AI / ML", "CYBERSECURITY"],
   },
 ];
 
