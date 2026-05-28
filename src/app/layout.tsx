@@ -5,6 +5,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { ThemeProvider } from "@/components/ui/ThemeProvider";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
+import { Cursor } from "@/components/Cursor";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-headline",
@@ -70,6 +71,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col bg-surface text-on-surface font-body">
         <ThemeProvider>
+          <Cursor />
           <ScrollProgress />
           <Navbar />
           <main className="flex-1">{children}</main>

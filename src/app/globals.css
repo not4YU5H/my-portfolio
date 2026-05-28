@@ -125,6 +125,43 @@
   50% { opacity: 0; }
 }
 
+/* === CUSTOM CURSOR === */
+* {
+  cursor: none;
+}
+
+@media (pointer: coarse) {
+  * {
+    cursor: auto;
+  }
+  #custom-cursor {
+    display: none !important;
+  }
+}
+
+#custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 18px;
+  background: var(--color-green-400, #4ade80); /* Fallback to tailwind green-400 */
+  pointer-events: none;
+  z-index: 9999;
+  animation: blink 1s step-end infinite;
+  mix-blend-mode: difference;
+  transition: width 0.2s, height 0.2s, background 0.2s, border 0.2s;
+  transform: translate(-50%, -50%);
+}
+
+#custom-cursor.hover {
+  width: 24px;
+  height: 24px;
+  background: transparent;
+  border: 2px solid var(--color-green-400, #4ade80);
+  animation: none;
+}
+
 /* === GLOBAL STYLES === */
 html {
   scroll-behavior: smooth;
