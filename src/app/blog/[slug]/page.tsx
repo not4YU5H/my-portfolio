@@ -23,9 +23,6 @@ export async function generateMetadata(
       title: post.title,
       description: post.excerpt,
     },
-    twitter: {
-      images: ["https://not4yu5h.github.io/my-portfolio/og-image.png"],
-    },
   };
 }
 
