@@ -81,7 +81,13 @@ export function Footer() {
             <p className="font-headline text-[10px] tracking-[0.2em] text-secondary/40">
               ©{currentYear} AYUSH_JAIN // ALL_RIGHTS_RESERVED
             </p>
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4 text-center sm:text-right">
+              <span className="font-headline text-[10px] tracking-[0.2em] text-secondary/20 block sm:inline">
+                [PRESS ` FOR TERMINAL]
+              </span>
+              <span className="font-headline text-[10px] tracking-widest text-secondary/30 hidden sm:inline">
+                {" // "}
+              </span>
               <span className="font-headline text-[10px] tracking-widest text-secondary/30">
                 V5.0.0
               </span>
