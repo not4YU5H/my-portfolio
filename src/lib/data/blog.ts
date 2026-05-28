@@ -11,6 +11,115 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "voxel-engine-greedy-meshing",
+    title: "Voxel Engines from Scratch — What Greedy Meshing Taught Me About Optimization",
+    excerpt:
+      "A deep dive into building a voxel renderer — chunk management, naive vs greedy meshing, and why this rabbit hole is the most satisfying optimization puzzle in game dev.",
+    date: "2025-05-05",
+    readTime: "8 min",
+    category: "GAME_DEV",
+    tags: ["GAME DEV", "VOXELS", "OPTIMIZATION"],
+    content: `## The Minecraft Illusion
+
+Voxel engines seem simple at first glance. It's just blocks, right? How hard can it be? But building a Minecraft-style engine from scratch is a masterclass in optimization and data structures. It's deceptively complex.
+
+## Naive Rendering vs The Real World
+
+If you render every single face of every single block in a 32x32x32 chunk, your GPU will cry. That's over 196,000 faces per chunk. **Naive rendering** works for a tiny demo, but the moment you expand the view distance, frame rates plummet. It's slow because you're telling the GPU to draw thousands of faces that players can't even see (e.g., blocks buried underground or touching other blocks).
+
+## Greedy Meshing to the Rescue
+
+**Greedy meshing** solves this by merging coplanar adjacent faces into single, larger quads. Instead of drawing 100 individual grass block top-faces, greedy meshing combines them into one large rectangle.
+
+### The Tradeoff
+
+The algorithm is more complex to implement and adds overhead when a chunk is updated (since the mesh must be recalculated), but the reduction in draw calls and vertex count is astronomical.
+
+## Chunk Management & Data Structures
+
+You can't load the entire world at once. You need spatial data structures. The world is divided into chunks, which are dynamically loaded and unloaded based on player position. Managing chunk borders, avoiding memory leaks, and multithreading the mesh generation are massive engineering challenges.
+
+## The Takeaway
+
+Building a voxel engine taught me to think in systems. It forces you to respect CPU cache lines, understand the true cost of an object, and appreciate how early optimization decisions shape the entire architecture.`,
+  },
+  {
+    slug: "building-sage-budgeting-app",
+    title: "Building Sage — Why Your Budget App Doesn't Know You're Stressed",
+    excerpt:
+      "Most finance apps track numbers. Sage tracks context. Here's the architecture behind mood-tagged transactions, behavioral budgeting, and why Clean Architecture was the right call for a complex Android app.",
+    date: "2025-04-20",
+    readTime: "7 min",
+    category: "ENGINEERING",
+    tags: ["ANDROID", "ARCHITECTURE", "FINTECH"],
+    content: `## The Context Problem
+
+You spent $40 on takeout. Traditional budgeting apps log a -$40 entry under "Food & Dining". What they don't capture is *why*. You ordered takeout because you were exhausted after a terrible 4-hour meeting.
+
+Numbers without context don't change behavior. **Sage tracks context.**
+
+## The Solution: Behavioral Budgeting
+
+By implementing mood-tagged transactions and contextual logging, Sage bridges the gap between finance and psychology. When logging an expense, you tag the emotional state or context that triggered it. Over time, patterns emerge.
+
+## Architectural Decisions
+
+For an Android app handling sensitive financial data, offline persistence, and complex data relations, MVC wasn't going to cut it.
+
+I opted for **Clean Architecture** with feature-based packaging. Separating the domain layer from the presentation and data layers ensured that UI changes didn't break core budgeting logic, making testing robust and future feature additions painless.
+
+## The Three-Layer System
+
+Sage abandons arbitrary categories in favor of a psychological approach:
+1. **Needs:** Non-negotiable survival expenses.
+2. **Wants:** Planned discretionary spending.
+3. **Impulses:** Unplanned emotional spending.
+
+Categorizing expenses this way immediately shifts how you view your spending habits.
+
+## The Goal Vault & Subscription Graveyard
+
+We also implemented visual psychological tricks:
+- **The Goal Vault:** Visualizing saving goals as locked vaults that fill over time.
+- **The Subscription Graveyard:** A dedicated view showing exactly how much forgotten subscriptions are bleeding from your account annually.`,
+  },
+  {
+    slug: "building-autonomous-ai-agents",
+    title: "Autonomous Pipelines — Building AI Agents That Actually Ship",
+    excerpt:
+      "The gap between an AI demo and production AI is enormous. Here's what I learned building the Fitness Agent and AI Tools Directory — orchestrating LLMs, handling failure states, and shipping agents that run without supervision.",
+    date: "2025-03-28",
+    readTime: "9 min",
+    category: "AI",
+    tags: ["LLM", "AGENTS", "PIPELINES"],
+    content: `## Chatbots vs Agents
+
+There is a fundamental difference between an AI chatbot and an AI agent. A chatbot converses. An agent executes a task, uses tools, evaluates its own output, and iterates until the objective is complete.
+
+## LLM Reasoning Loops
+
+Building the **Fitness Agent** taught me how to construct reasoning loops. The agent receives a fitness goal, retrieves relevant biomechanical vectors from a database, and generates a workout. Crucially, it then *evaluates* its own plan against fatigue metrics before presenting it.
+
+## The Discovery Pipeline
+
+For the **AI Tools Directory**, the pipeline had to be entirely hands-off:
+1. **Cron Job:** Triggers discovery scrapers.
+2. **Gemini API:** Processes raw scraped data into structured, SEO-friendly markdown.
+3. **Supabase Insert:** Saves the validated data.
+4. **SSR Generation:** Next.js rebuilds the static pages incrementally.
+
+## Handling Failure Modes
+
+What happens when the LLM hallucinates or returns invalid JSON? In production, you can't just throw an error.
+- **Structured Outputs:** Forcing the LLM to adhere to strict JSON schemas.
+- **Retry Logic:** If validation fails, the error is fed back into the LLM as a prompt correction.
+- **Fallbacks:** Defaulting to safe values if the LLM enters an infinite reasoning loop.
+
+## Autonomy Needs Guardrails
+
+"Autonomous" does not mean "unmonitored." Implementing robust logging, alerts for failed pipeline runs, and strict rate-limiting guardrails is the only way to ensure your agents don't silently rack up massive API bills or corrupt your database.`,
+  },
+  {
     slug: "building-ai-tools-directory",
     title: "How I Built an AI Tools Directory That Indexes Itself",
     excerpt:
