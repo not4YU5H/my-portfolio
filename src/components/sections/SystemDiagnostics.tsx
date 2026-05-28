@@ -47,46 +47,28 @@ export function SystemDiagnostics() {
               </h3>
             </div>
             <div className="space-y-4">
-              {loading ? (
-                <>
-                  {experimentLogs.map((log, i) => (
-                    <motion.div
-                      key={`static-${i}`}
-                      initial={{ opacity: 0, y: 10 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: i * 0.15 + 0.3 }}
-                      className="flex items-start gap-3"
-                    >
-                      <div className="mt-1.5 w-1.5 h-1.5 bg-primary-container/60 flex-shrink-0" />
-                      <p className="font-body text-sm text-secondary leading-relaxed">
-                        {log}
-                      </p>
-                    </motion.div>
-                  ))}
-                  <div className="flex items-center gap-3 text-secondary/40 pt-2">
-                    <Loader2 className="w-3.5 h-3.5 animate-spin" />
-                    <span className="font-headline text-[10px] tracking-widest">
-                      SYNCING_LIVE_DATA...
-                    </span>
-                  </div>
-                </>
-              ) : (
-                allLogs.map((log, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.15 + 0.3 }}
-                    className="flex items-start gap-3"
-                  >
-                    <div className="mt-1.5 w-1.5 h-1.5 bg-primary-container/60 flex-shrink-0" />
-                    <p className="font-body text-sm text-secondary leading-relaxed">
-                      {log}
-                    </p>
-                  </motion.div>
-                ))
+              {allLogs.map((log, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.15 + 0.3 }}
+                  className="flex items-start gap-3"
+                >
+                  <div className="mt-1.5 w-1.5 h-1.5 bg-primary-container/60 flex-shrink-0" />
+                  <p className="font-body text-sm text-secondary leading-relaxed">
+                    {log}
+                  </p>
+                </motion.div>
+              ))}
+              {loading && (
+                <div className="flex items-center gap-3 text-secondary/40 pt-2">
+                  <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                  <span className="font-headline text-[10px] tracking-widest">
+                    SYNCING_LIVE_DATA...
+                  </span>
+                </div>
               )}
             </div>
             <div className="pt-4">
