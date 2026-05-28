@@ -1,32 +1,67 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { FileText, Loader2 } from "lucide-react";
+import { FileText } from "lucide-react";
 import { experimentLogs } from "@/lib/data/skills";
 import { useEffect, useState } from "react";
 
 export function SystemDiagnostics() {
   const [liveLogs, setLiveLogs] = useState<string[]>([]);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function fetchGitHubActivity() {
       try {
-        const res = await fetch("/api/github-activity");
+        const res = await fetch("https://api.github.com/users/not4YU5H/events/public?per_page=10", {
+          headers: {
+            Accept: "application/vnd.github.v3+json",
+          },
+        });
         if (res.ok) {
-          const data = await res.json();
-          setLiveLogs(data.logs || []);
+          const events = await res.json();
+          const allowedTypes = ["PushEvent", "CreateEvent", "ReleaseEvent"];
+          const meaningfulEvents = events.filter((e: { type: string }) => allowedTypes.includes(e.type));
+
+          const formattedLogs: string[] = [];
+
+          for (const event of meaningfulEvents) {
+            if (formattedLogs.length >= 5) break;
+
+            const repoName = event.repo.name.replace("not4YU5H/", "");
+
+            switch (event.type) {
+              case "PushEvent":
+                const commitCount = event.payload.commits?.length || 1;
+                formattedLogs.push(`Pushed ${commitCount} commit(s) to ${repoName}`);
+                break;
+              case "CreateEvent":
+                const refType = event.payload.ref_type;
+                const refName = event.payload.ref;
+                if (refType === "repository") {
+                  formattedLogs.push(`Created new repository: ${repoName}`);
+                } else if (refType === "branch") {
+                  formattedLogs.push(`Created branch '${refName}' in ${repoName}`);
+                }
+                break;
+              case "ReleaseEvent":
+                const tagName = event.payload.release?.tag_name || "a release";
+                formattedLogs.push(`Released ${tagName} on ${repoName}`);
+                break;
+            }
+          }
+          setLiveLogs(formattedLogs);
         }
       } catch (error) {
-        console.error("Error fetching github activity:", error);
-      } finally {
-        setLoading(false);
+        // Silently fail and fallback to static logs
+        console.error("Error fetching github activity client-side:", error);
       }
     }
     fetchGitHubActivity();
   }, []);
 
-  const allLogs = [...experimentLogs, ...liveLogs];
+  // Show only 1-2 pinned hardcoded entries + live events
+  // Assuming experimentLogs[0] is the AI Tools directory string
+  const pinnedLogs = [experimentLogs[0]];
+  const allLogs = [...pinnedLogs, ...liveLogs];
 
   return (
     <section className="py-24 md:py-32 bg-surface">
@@ -62,19 +97,6 @@ export function SystemDiagnostics() {
                   </p>
                 </motion.div>
               ))}
-              {loading && (
-                <div className="flex items-center gap-3 text-secondary/40 pt-2">
-                  <Loader2 className="w-3.5 h-3.5 animate-spin" />
-                  <span className="font-headline text-[10px] tracking-widest">
-                    SYNCING_LIVE_DATA...
-                  </span>
-                </div>
-              )}
-            </div>
-            <div className="pt-4">
-              <span className="font-headline text-[9px] tracking-[0.3em] text-secondary/30">
-                LAST_UPDATED: 29_APR_2025 // 18:00:00 UTC
-              </span>
             </div>
           </motion.div>
         </div>

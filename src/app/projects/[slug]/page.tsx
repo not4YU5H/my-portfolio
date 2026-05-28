@@ -23,9 +23,6 @@ export async function generateMetadata(
       title: `${project.title} // Deep Dive`,
       description: project.missionBrief,
     },
-    twitter: {
-      images: ["https://not4yu5h.github.io/my-portfolio/og-image.png"],
-    },
   };
 }
 
