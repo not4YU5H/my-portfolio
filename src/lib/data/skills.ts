@@ -47,8 +47,5 @@ export const fieldsOfStudy = [
 
 export const experimentLogs = [
   "Shipped AI Tools Directory — 500+ tools auto-indexed and published.",
-  "Hit a new bench press PR at the gym. Progressive overload is just recursion for muscles.",
-  "Weekend cricket match — scored 45 off 30 balls. Not bad for a programmer.",
   "Exploring voxel engine architecture. Greedy meshing is surprisingly satisfying.",
-  "Long ride to Puri on the bike. 100km in 2 hours. Wind therapy > any debugger.",
 ];
