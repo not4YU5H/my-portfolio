@@ -8,6 +8,7 @@ import { TacticalGrid } from "@/components/ui/TacticalGrid";
 import { ParticleField } from "@/components/ui/ParticleField";
 import { TypewriterText } from "@/components/ui/TypewriterText";
 import ayushProfilePic from "../../../public/ayush.png";
+import { AVAILABILITY } from "@/config/status";
 
 export function HeroSection() {
   const [bootComplete, setBootComplete] = useState(false);
@@ -81,6 +82,30 @@ export function HeroSection() {
               CS grad. I code, I game, I lift, I ride. <br></br>
               Believer in YOLO — life&apos;s too short to not try everything.
             </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={bootComplete ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.8 }}
+            >
+              <a
+                href="#contact"
+                className="inline-flex items-center gap-2 font-headline text-xs tracking-widest text-secondary hover:text-on-surface transition-colors group"
+              >
+                <span
+                  className={`w-2 h-2 rounded-full animate-pulse ${
+                    AVAILABILITY === "available"
+                      ? "bg-green-400"
+                      : "bg-red-500"
+                  }`}
+                />
+                <span className="group-hover:underline decoration-primary-container/50 underline-offset-4">
+                  {AVAILABILITY === "available"
+                    ? "AVAILABLE_FOR_HIRE"
+                    : "CURRENTLY_BOOKED"}
+                </span>
+              </a>
+            </motion.div>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
