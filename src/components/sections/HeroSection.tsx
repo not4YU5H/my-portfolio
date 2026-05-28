@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { ArrowDown, MapPin, Download } from "lucide-react";
+import { ArrowDown, MapPin } from "lucide-react";
 import { TacticalGrid } from "@/components/ui/TacticalGrid";
 import { ParticleField } from "@/components/ui/ParticleField";
 import { TypewriterText } from "@/components/ui/TypewriterText";
@@ -124,15 +124,6 @@ export function HeroSection() {
                 className="inline-flex items-center gap-2 ghost-border px-8 py-3 font-headline text-sm tracking-widest text-primary hover:bg-surface-container-high transition-all"
               >
                 GET IN TOUCH
-              </a>
-              <a
-                href="/resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 ghost-border px-6 py-3 font-headline text-sm tracking-widest text-secondary hover:text-primary hover:bg-surface-container-high transition-all"
-              >
-                <Download className="w-4 h-4" />
-                DOSSIER
               </a>
             </motion.div>
           </div>
