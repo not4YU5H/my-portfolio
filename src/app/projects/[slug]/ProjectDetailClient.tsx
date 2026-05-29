@@ -257,12 +257,12 @@ export function ProjectDetailClient({ project }: { project: Project }) {
                 REPO_ACCESS
               </a>
             )}
-            <a
+            <Link
               href="/#contact"
               className="inline-flex items-center gap-2 ghost-border px-8 py-3 font-headline text-sm tracking-widest text-primary hover:bg-surface-container-high transition-all"
             >
               OPEN_UPLINK
-            </a>
+            </Link>
             <Link
               href="/#projects"
               className="inline-flex items-center gap-2 ghost-border px-8 py-3 font-headline text-sm tracking-widest text-secondary hover:text-primary hover:bg-surface-container-high transition-all"
