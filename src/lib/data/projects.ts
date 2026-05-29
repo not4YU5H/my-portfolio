@@ -25,6 +25,45 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    slug: "project-sage",
+    title: "SAGE",
+    description: "AI-powered Android budgeting app that layers emotional and contextual tracking onto personal finance. Features mood-tagged transactions, goal vaults, and an optional on-device AI advisor.",
+    sector: "ANDROID_APP",
+    deploymentDate: "APR_2025",
+    objectiveStatus: "IN_PROGRESS",
+    refId: "09",
+    liveUrl: null,
+    repoUrl: "https://github.com/not4YU5H/project_sage",
+    showLiveUrl: false,
+    showRepoUrl: false,
+    missionBrief: "Most budgeting apps track numbers. Sage tracks *why* you spend. The goal was to build an Android app that correlates emotional state and context with spending patterns — so users understand their behavior, not just their balance.",
+    primaryChallenge: "Correlating emotional states with spending data in a way that feels natural to the user without making transaction logging tedious or intrusive.",
+    solutionMandate: "Implement a Clean Architecture with a feature-based package structure in Kotlin. Use Jetpack Compose for the UI, Room for local persistence, and provide an optional on-device Gemini AI layer.",
+    engineeringLog: "Phase 2 (full Compose UI) complete. Phase 3 in progress. Built a 3-layer budget system (needs/wants/impulse) and visual goal vaults with animated milestone celebrations.",
+    interfaceArchitecture: "MOOD_TAGGING, THREE_LAYER_BUDGET, GOAL_VAULTS, SUBSCRIPTION_GRAVEYARD, and an optional AI_ADVISOR.",
+    codeSnippet: `// TRANSACTION_LOG_WITH_MOOD
+@Entity(tableName = "transactions")
+data class Transaction(
+    @PrimaryKey(autoGenerate = true) val id: Int = 0,
+    val amount: Double,
+    val category: CategoryType, // NEED, WANT, IMPULSE
+    val mood: MoodState, // STRESSED, HAPPY, NEUTRAL, FATIGUED
+    val timestamp: Long = System.currentTimeMillis()
+)`,
+    metrics: [
+      {
+        label: "STATUS",
+        value: "ACTIVE",
+        description: "IN_ACTIVE_DEVELOPMENT",
+      },
+      {
+        label: "ARCHITECTURE",
+        value: "CLEAN",
+        description: "Kotlin + Compose + Room",
+      }
+    ],
+  },
+  {
     slug: "alterego",
     title: "ALTER_EGO",
     description: "An AI-powered Android app built with Kotlin and Google Stitch. Explores AI-driven identity and persona experiences on mobile.",
