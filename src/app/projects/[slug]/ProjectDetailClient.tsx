@@ -61,14 +61,14 @@ export function ProjectDetailClient({ project }: { project: Project }) {
           </motion.h1>
 
           {/* Project Links */}
-          {(project.repoUrl || project.liveUrl) && (
+          {((project.showRepoUrl && project.repoUrl) || (project.showLiveUrl && project.liveUrl)) && (
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
               className="flex flex-wrap gap-4 mt-8"
             >
-              {project.repoUrl && (
+              {project.showRepoUrl && project.repoUrl && (
                 <a
                   href={project.repoUrl}
                   target="_blank"
@@ -79,7 +79,7 @@ export function ProjectDetailClient({ project }: { project: Project }) {
                   VIEW_SOURCE
                 </a>
               )}
-              {project.liveUrl && (
+              {project.showLiveUrl && project.liveUrl && (
                 <a
                   href={project.liveUrl}
                   target="_blank"
@@ -235,7 +235,7 @@ export function ProjectDetailClient({ project }: { project: Project }) {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="flex flex-wrap justify-center gap-4"
           >
-            {project.liveUrl && (
+            {project.showLiveUrl && project.liveUrl && (
               <a
                 href={project.liveUrl}
                 target="_blank"
@@ -246,7 +246,7 @@ export function ProjectDetailClient({ project }: { project: Project }) {
                 LIVE_DEMO
               </a>
             )}
-            {project.repoUrl && (
+            {project.showRepoUrl && project.repoUrl && (
               <a
                 href={project.repoUrl}
                 target="_blank"
