@@ -25,6 +25,53 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    slug: "sonic",
+    title: "SONIC",
+    description: "Premium landing page for an AI-powered audio branding studio. Features an interactive 3D WebGL wave mesh, real-time audio-reactive waveform visualization, and cinematic scroll animations.",
+    sector: "FRONTEND",
+    deploymentDate: "MAY_2025",
+    objectiveStatus: "COMPLETE",
+    refId: "06",
+    liveUrl: "https://sonic-pearl.vercel.app",
+    repoUrl: "https://github.com/not4YU5H/Sonic",
+    showLiveUrl: false,
+    showRepoUrl: false,
+    missionBrief: "Build a landing page that sells the *feeling* of a product before the product even speaks. The brief was to embody the intersection of sound, space, and identity through the browser alone — no frameworks, no shortcuts.",
+    primaryChallenge: "Achieving cinematic motion quality and complex WebGL rendering without relying on heavy frameworks like React, ensuring smooth 60 FPS performance on a vanilla stack.",
+    solutionMandate: "Use Vanilla JavaScript, Three.js for 3D rendering, GSAP for scroll-based animation timelines, and the Web Audio API for real-time sound visualization, all bundled neatly with Vite.",
+    engineeringLog: "The challenge was achieving cinematic motion quality without a component framework. GSAP's timeline system was used to orchestrate entrance animations across scroll positions, while Three.js handled the real-time 3D layer with minimal GPU overhead via buffer geometry optimization.",
+    interfaceArchitecture: "3D_HERO_MESH (Interactive WebGL wave geometry), AUDIO_WAVEFORM (Real-time frequency bar visualization), SCROLL_CHOREOGRAPHY (GSAP timelines), and CUSTOM_CURSOR.",
+    codeSnippet: `// AUDIO_WAVEFORM_VISUALIZATION
+const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+const analyser = audioCtx.createAnalyser();
+analyser.fftSize = 256;
+const bufferLength = analyser.frequencyBinCount;
+const dataArray = new Uint8Array(bufferLength);
+
+function renderFrame() {
+  requestAnimationFrame(renderFrame);
+  analyser.getByteFrequencyData(dataArray);
+  updateWaveformMesh(dataArray);
+}`,
+    metrics: [
+      {
+        label: "FRAMEWORK",
+        value: "Vanilla JS",
+        description: "Zero runtime dependencies",
+      },
+      {
+        label: "3D_ENGINE",
+        value: "Three.js",
+        description: "WebGL",
+      },
+      {
+        label: "ANIMATION",
+        value: "GSAP",
+        description: "ScrollTrigger",
+      },
+    ],
+  },
+  {
     slug: "ai-tools-directory",
     title: "AI_TOOLS_DIRECTORY",
     description:
