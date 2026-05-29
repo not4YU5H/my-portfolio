@@ -52,7 +52,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
               </span>
             </div>
             <div className="flex items-center gap-4">
-              {project.liveUrl && (
+              {project.showLiveUrl && project.liveUrl && (
                 <button
                   onClick={(e) => {
                     e.preventDefault();
@@ -64,7 +64,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                   [LIVE_DEMO <ArrowUpRight className="w-3 h-3" />]
                 </button>
               )}
-              {project.repoUrl && (
+              {project.showRepoUrl && project.repoUrl && (
                 <button
                   onClick={(e) => {
                     e.preventDefault();
