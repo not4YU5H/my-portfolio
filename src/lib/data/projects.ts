@@ -25,6 +25,42 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    slug: "alterego",
+    title: "ALTER_EGO",
+    description: "An AI-powered Android app built with Kotlin and Google Stitch. Explores AI-driven identity and persona experiences on mobile.",
+    sector: "ANDROID_APP",
+    deploymentDate: "MAY_2025",
+    objectiveStatus: "IN_PROGRESS",
+    refId: "08",
+    liveUrl: null,
+    repoUrl: "https://github.com/not4YU5H/AlterEgo",
+    showLiveUrl: false,
+    showRepoUrl: false,
+    missionBrief: "AlterEgo is an AI-native Android app exploring what it means to have a second, AI-augmented persona. Built entirely in Kotlin, powered by Google Stitch for on-device Gemini AI integration.",
+    primaryChallenge: "[CLASSIFIED] // IDENTITY_LAYER // PENDING_DECLASS",
+    solutionMandate: "[CLASSIFIED] // GEMINI_INTEGRATION_ONGOING",
+    engineeringLog: "[CLASSIFIED] // AWAITING_CLEARANCE",
+    interfaceArchitecture: "[CLASSIFIED] // NATIVE_ANDROID_AI",
+    codeSnippet: `// CLASSIFIED_SNIPPET
+// STITCH_MCP_INIT
+val stitchConfig = StitchConfig.Builder()
+    .setGeminiModel("gemini-pro")
+    .build()
+// [REDACTED]`,
+    metrics: [
+      {
+        label: "STATUS",
+        value: "ACTIVE",
+        description: "IN_ACTIVE_DEVELOPMENT",
+      },
+      {
+        label: "INTEGRATION",
+        value: "STITCH",
+        description: "Google Gemini AI",
+      }
+    ],
+  },
+  {
     slug: "nyra",
     title: "NYRA",
     description: "An Android companion app with a hybrid native/web architecture. Built with Kotlin and Java, featuring an embedded web layer for dynamic content rendering.",
