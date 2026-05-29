@@ -25,6 +25,44 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    slug: "nyra",
+    title: "NYRA",
+    description: "An Android companion app with a hybrid native/web architecture. Built with Kotlin and Java, featuring an embedded web layer for dynamic content rendering.",
+    sector: "ANDROID_APP",
+    deploymentDate: "MAY_2025",
+    objectiveStatus: "IN_PROGRESS",
+    refId: "07",
+    liveUrl: null,
+    repoUrl: "https://github.com/not4YU5H/Nyra",
+    showLiveUrl: false,
+    showRepoUrl: false,
+    missionBrief: "Building Nyra — a hybrid Android companion with a dynamic web layer embedded for flexible content delivery and rich UI rendering beyond native XML.",
+    primaryChallenge: "[CLASSIFIED] // DATA_RESTRICTED // PENDING_DECLASS",
+    solutionMandate: "[CLASSIFIED] // DEVELOPMENT_ONGOING",
+    engineeringLog: "[CLASSIFIED] // AWAITING_CLEARANCE",
+    interfaceArchitecture: "[CLASSIFIED] // HYBRID_NATIVE_WEB_UI",
+    codeSnippet: `// CLASSIFIED_SNIPPET
+// HYBRID_WEBVIEW_INIT
+class NyraWebViewClient : WebViewClient() {
+    override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest?): Boolean {
+        // [REDACTED]
+        return super.shouldOverrideUrlLoading(view, request)
+    }
+}`,
+    metrics: [
+      {
+        label: "STATUS",
+        value: "ACTIVE",
+        description: "IN_ACTIVE_DEVELOPMENT",
+      },
+      {
+        label: "ARCHITECTURE",
+        value: "HYBRID",
+        description: "Kotlin + Java + HTML",
+      }
+    ],
+  },
+  {
     slug: "sonic",
     title: "SONIC",
     description: "Premium landing page for an AI-powered audio branding studio. Features an interactive 3D WebGL wave mesh, real-time audio-reactive waveform visualization, and cinematic scroll animations.",
